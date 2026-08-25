@@ -17,6 +17,18 @@ Features
 * Lightweight: Extremely fast, small, and stays out of your way.
 
 
+### Available patches for bwm
+
+* [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/) : All floating windows are centered, like the center patch, but without a rule.
+* [pertag](https://dwm.suckless.org/patches/pertag/) : More general approach to taglayouts patch. This patch keeps layout, mwfact, barpos and nmaster per tag.
+* [tiledmove](https://dwm.suckless.org/patches/tiledmove/) : Patch to make the function movemouse not force clients to float.
+* [warp](https://dwm.suckless.org/patches/warp/) : This patch warps the mouse cursor to the center of the currently focused window or screen.
+* [hide-vacant-tags](https://dwm.suckless.org/patches/hide_vacant_tags/) : This patch prevents dwm from drawing tags with no clients (i.e. vacant) on the bar. Moreover, clients assigned to all tags ("tag 0") do not count towards each individual tag.
+* [removeborders](https://dwm.suckless.org/patches/removeborder/) : This patch removes the window frame if there is only one window on the tag.
+* [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/) : This patch adds smart margins around windows, as well as new layouts.
+* [windowmap](https://dwm.suckless.org/patches/windowmap/) : The windowmap patch makes the windows get mapped or unmapped in Xorg. This results in certain behaviour being enabled, for example when you use a compositor like picom - your windows will fade in and out when you switch dwm tags.
+
+
 Requirements
 ------------
 In order to build bwm you need the Xlib header files.
@@ -33,11 +45,13 @@ This project is primarily focused on and tested for BSD systems.
 
 BSD:
 
-    sh build.sh
+    make
+    (root) make install
 
-GNU/Linux (Use at your own risk):
+or
 
-    sh build-gnu.sh
+    (root) make all install
+
 
 Running bwm
 -----------

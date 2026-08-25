@@ -4,11 +4,15 @@ st is a simple terminal emulator for X which sucks less.
 
 ## Notes about this fork
 
-This is a fork of st, the original repo can be found here: [https://git.suckless.org/st/](https://git.suckless.org/st/)
+This is a pre-configured fork of st. Unlike the vanilla version, all patches
+listed below are already integrated into the source code. You do not need to
+apply them manually; the terminal is ready to be built and used immediately.
 
-The original st webpage is here: [https://st.suckless.org/](https://st.suckless.org/)
+  - Original Repository: [https://git.suckless.org/st/](https://git.suckless.org/st/)
+  - Original Webpage: [https://st.suckless.org/](https://st.suckless.org/)
 
-### Available patches
+  
+### Integrated patches
 
 * [Clipboard](https://st.suckless.org/patches/clipboard/) : This trivial patch sets CLIPBOARD on selection.
 * [font2](https://st.suckless.org/patches/font2/) : This patch allows to add spare font besides default.
@@ -22,34 +26,6 @@ The colorscheme patch is a custom patch, it is not the ones from [colorscheme](h
 It is `solarized.dark` exported from https://terminal.sexy with a different bg and fg color.
 Also the `defaultfg`, `defaultbg` and `defaultcs` are not `static`s, otherwise it won't compile.
 
-### Previous available patches
-
-* [Fix Keyboard Input](https://st.suckless.org/patches/fix_keyboard_input/) : Add a few previously undefined keys.
-Removed as this was used for additional keys for zooming.
-
-### Applying/Removing Patches
-Applying patches from this repository use:
-
-- applied all at once without committing:
-```
-git apply patches/*
-```
-
-- applied as individual commits
-```
-git am patches/*
-```
-
-Applying patches from https://st.suckless.org/patches/ use:
-```
-# Add custom patch
-patch -Np1 -i patches/custom.diff
-or
-patch < patch.diff
-
-# Remove st-alpha-201806-16-0.81 patch
-patch -R patches/st-alpha-20180616-0.8.1.diff
-```
 
 ## Requirements
 
@@ -91,5 +67,5 @@ Reset Zoom  | `ctrl` + `shift` + `Home`
 
 ## Credits
 
-* Forked from [https://st.suckless.org/](https://st.suckless.org/)
+* Forked from [suckless simple terminal](https://st.suckless.org/)
 * Based on Aurélien APTEL aurelien.aptel@gmail.com bt source code.

@@ -127,7 +127,7 @@ static const Key keys[] = {
 	{ 0, XK_F3, 	spawn, SHCMD("mixer vol=+0.05") },
 
 	{ MODKEY, XK_space,		spawn, {.v = dmenucmd } },
-	{ 0,			XK_F12,			spawn, SHCMD("flameshot gui --path ~/img/screenshots") },
+	{ 0,			XK_F12,			spawn, SHCMD("flameshot gui --path ~/media/img/screenshots") },
 	{ MODKEY, XK_w, 			spawn, SHCMD("st") },
 	{ MODKEY, XK_l, 			spawn, SHCMD("firefox") },
 

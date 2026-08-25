@@ -66,9 +66,10 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function     	format          argument */
-	{ run_command,    "│ %s │ ",        "sh -c 'xkb-switch -p | cut -c1-2'" },
+	{ run_command,    "│ %s │ ",      "sh -c 'xkb-switch -p | cut -c1-2'" },
 	{ run_command,    "VOL %s%% │ ",  "sh -c 'mixer vol | awk -F[=:] \"{printf \\\"%d\\\", \\$2*100}\"'" },
-	{ cpu_perc,     	"cpu %s%% │ ",  NULL },
+	{ cpu_perc,     	"cpu %s%%  ",  NULL },
+	{ temp,         	"%s°C │ ",     	"dev.cpu.0.temperature" },
 	{ ram_used,     	"mem %s │ ",    NULL },
 	{ battery_perc, 	"BAT %s%% ",    NULL },
 	{ battery_state, 	"(%s) │ ",     	NULL },
