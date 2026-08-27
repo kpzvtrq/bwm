@@ -3,6 +3,11 @@ dmenu - dynamic menu
 dmenu is an efficient dynamic menu for X.
 
 
+### Integrated patches
+
+* [fuzzymatch](https://tools.suckless.org/dmenu/patches/fuzzymatch/) : Add support for fuzzy-matching to dmenu, enabling matching using non-consecutive portions of items.
+
+
 Requirements
 ------------
 In order to build dmenu you need the Xlib header files.

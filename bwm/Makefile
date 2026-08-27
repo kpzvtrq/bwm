@@ -4,9 +4,14 @@
 
 CC = cc
 
+# FreeBSD
 X11INC = /usr/local/include
-FREETYPEINC = /usr/local/include/freetype2
 X11LIB = /usr/local/lib
+FREETYPEINC = /usr/local/include/freetype2
+
+# OpenBSD
+# X11INC = /usr/X11R6/include
+# X11LIB = /usr/X11R6/lib
 
 INCS = -I$(X11INC) -I$(FREETYPEINC) -Isrc
 

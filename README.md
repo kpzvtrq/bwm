@@ -17,7 +17,7 @@ Features
 * Lightweight: Extremely fast, small, and stays out of your way.
 
 
-### Available patches for bwm
+### Integrated patches for bwm
 
 * [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/) : All floating windows are centered, like the center patch, but without a rule.
 * [pertag](https://dwm.suckless.org/patches/pertag/) : More general approach to taglayouts patch. This patch keeps layout, mwfact, barpos and nmaster per tag.

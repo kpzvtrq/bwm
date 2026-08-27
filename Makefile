@@ -1,4 +1,4 @@
-SUBDIR= bwm slstatus st
+SUBDIR= bwm slstatus st dmenu
 
 .include <bsd.subdir.mk>
 
