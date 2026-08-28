@@ -16,7 +16,7 @@ static       int smartgaps         = 1;        /* 1 means no outer gap when ther
 static const int showbar           = 1;        /* 0 means no bar */
 static const int topbar            = 0;        /* 0 means bottom bar */
 
-#define FONT "JetBrainsMono Nerd Font:style=SemiBold:pixelsize=15:antialias=true:autohint=true"
+#define FONT "IntOneMono NFM:style=Bold:pixelsize=15:antialias=true:autohint=true"
 static const char *fonts[] = { FONT };
 
 static const char col_gray1[]       	= "#1d2021";   // Bar background color
@@ -121,10 +121,15 @@ static const Key keys[] = {
 	{ 0, XK_F5, 	spawn, SHCMD("backlight decr 10") },
 	{ 0, XK_F6, 	spawn, SHCMD("backlight incr 10") },
 
-/* Volume (OSS - Mixer) */
-	{ 0, XK_F1, 	spawn, SHCMD("mixer vol.mute=toggle") },
-	{ 0, XK_F2, 	spawn, SHCMD("mixer vol=-0.05") },
-	{ 0, XK_F3, 	spawn, SHCMD("mixer vol=+0.05") },
+/* Volume (FreeBSD OSS - Mixer) */
+	// { 0, XK_F1, 	spawn, SHCMD("mixer vol.mute=toggle") },
+	// { 0, XK_F2, 	spawn, SHCMD("mixer vol=-0.05") },
+	// { 0, XK_F3, 	spawn, SHCMD("mixer vol=+0.05") },
+
+/* Volume (OpenBSD sndio) */
+	{ 0, XK_F1, 	spawn, SHCMD("sndioctl output.mute=!") },
+	{ 0, XK_F2, 	spawn, SHCMD("sndioctl output.level=-0.05") },
+	{ 0, XK_F3, 	spawn, SHCMD("sndioctl output.level=+0.05") },
 
 	{ MODKEY, XK_space,		spawn, {.v = dmenucmd } },
 	{ 0,			XK_F12,			spawn, SHCMD("flameshot gui --path ~/media/img/screenshots") },

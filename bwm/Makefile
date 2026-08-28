@@ -1,90 +1,21 @@
 # bwm - bsd window manager
 # See LICENSE file for copyright and license details.
-.OBJDIR: ./
 
-CC = cc
+PROG= bwm
+BINDIR?= /home/kpz/.local/bin
+MAN=
 
-# FreeBSD
-X11INC = /usr/local/include
-X11LIB = /usr/local/lib
-FREETYPEINC = /usr/local/include/freetype2
+.PATH: src
+SRCS=	bwm.c \
+		brw.c \
+		util.c
 
-# OpenBSD
-# X11INC = /usr/X11R6/include
-# X11LIB = /usr/X11R6/lib
+CPPFLAGS+=	-I/usr/X11R6/include -I/usr/X11R6/include/freetype2
+CPPFLAGS+=	-I/usr/local/include -I/usr/local/include/freetype2
+LDADD+=		-L/usr/X11R6/lib
+LDADD+=		-L/usr/local/lib
+LDADD+=		-lX11 -lXft -lXinerama -lfontconfig
+CFLAGS+=	-std=c17 -pedantic -Wall -O2
 
-INCS = -I$(X11INC) -I$(FREETYPEINC) -Isrc
+.include <bsd.prog.mk>
 
-CPPFLAGS = \
-	-D_DEFAULT_SOURCE \
-	-D_BSD_SOURCE \
-	-D_XOPEN_SOURCE=700L \
-	-DXINERAMA
-
-CFLAGS = \
-	-std=c17 \
-	-pedantic \
-	-Wall \
-	-Wextra \
-	-Wno-deprecated-declarations \
-	-Os \
-	$(CPPFLAGS) \
-	$(INCS)
-
-LIBS = \
-	-L$(X11LIB) \
-	-lX11 \
-	-lXinerama \
-	-lfontconfig \
-	-lXft
-
-
-TARGET = bwm
-
-OBJDIR = obj
-
-OBJS = \
-	$(OBJDIR)/brw.o \
-	$(OBJDIR)/bwm.o \
-	$(OBJDIR)/util.o
-
-
-all: $(TARGET)
-
-
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-
-
-$(OBJDIR)/brw.o: src/brw.c src/config.h
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c src/brw.c -o $@
-
-$(OBJDIR)/bwm.o: src/bwm.c src/config.h
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c src/bwm.c -o $@
-
-$(OBJDIR)/util.o: src/util.c src/config.h
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c src/util.c -o $@
-
-
-$(TARGET): $(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $@
-
-
-clean:
-	rm -f $(TARGET)
-	rm -rf $(OBJDIR)
-
-
-install: $(TARGET)
-	install -d -m 755 /usr/local/bin
-	install -m 755 $(TARGET) /usr/local/bin
-
-
-uninstall:
-	rm -f /usr/local/bin/$(TARGET)
-
-
-.PHONY: all clean install uninstall
